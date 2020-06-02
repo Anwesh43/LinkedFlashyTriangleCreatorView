@@ -212,4 +212,13 @@ class FlashyTriangleCreatorView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : FlashyTriangleCreatorView {
+            val view : FlashyTriangleCreatorView = FlashyTriangleCreatorView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
