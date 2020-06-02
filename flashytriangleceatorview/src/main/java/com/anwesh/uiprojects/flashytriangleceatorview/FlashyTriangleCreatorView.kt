@@ -187,4 +187,27 @@ class FlashyTriangleCreatorView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : FlashyTriangleCreatorView) {
+
+        private val animator : Animator = Animator(view)
+        private val ftp : FlashyTriangleCreator = FlashyTriangleCreator(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ftp.draw(canvas, paint)
+            animator.animate {
+                ftp.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ftp.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
