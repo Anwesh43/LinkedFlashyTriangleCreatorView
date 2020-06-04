@@ -39,6 +39,7 @@ fun Canvas.drawFlashyTrianglePart(i : Int, scale : Float, size : Float, paint : 
     save()
     translate(verts[i][0], verts[i][1])
     drawCircle(0f, 0f, rsf, paint)
+    drawCircle(diffNext.x, diffNext.y, rsf, paint)
     drawLine(0f, 0f, diffNext.x * sci, diffNext.y * sci, paint)
     restore()
 }
